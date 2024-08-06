@@ -1,0 +1,46 @@
+
+<div style="padding: 20px;">
+    <h2>Adicionar Produto</h2>
+    <form (ngSubmit)="adicionarProduto()">
+      <label>
+        Nome:
+        <input [(ngModel)]="novoProduto.nome" name="nome" required>
+      </label>
+      <br>
+      <label>
+        Preço:
+        <input [(ngModel)]="novoProduto.preco" name="preco" type="number" min="0" required>
+      </label>
+      <br>
+      <label>
+        Quantidade:
+        <input [(ngModel)]="novoProduto.quantidade" name="quantidade" type="number" min="0" required>
+      </label>
+      <br>
+      <button type="submit">Adicionar</button>
+    </form>
+  
+    <h2>Lista de Produtos</h2>
+    <table border="1" style="width: 100%; margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td>{{ produto.id }}</td>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.preco | currency }}</td>
+          <td>{{ produto.quantidade }}</td>
+          <td>
+            <button (click)="removerProduto(produto.id)">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
